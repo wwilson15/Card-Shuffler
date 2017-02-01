@@ -7,9 +7,30 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <time.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+using namespace std;
+
+
+class card{
+public:
+    double suit;
+    double number;
+};
+
+
+
+
+
+int main() {
+    srand(time(NULL));
+    
+    cout << "Test " << endl;
+    
+    vector<card> deck;
+    for (int i = 0; i<3; i++ ){
+        for (int j = 0; j<12; j++){
+        }
+    }
 }
