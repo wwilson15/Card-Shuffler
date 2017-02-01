@@ -26,7 +26,7 @@ public:
 int main() {
     srand(time(NULL));
     
-    cout << "Testing " << endl;
+    cout << "tesT " << endl;
     
     vector<card> deck;
     for (int i = 0; i<3; i++ ){
