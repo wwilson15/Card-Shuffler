@@ -11,6 +11,7 @@
 #include <time.h>
 #include <assert.h>
 #include <stdio.h>
+#include <fstream>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
 
 
 void deck_shuffle(vector<card>* pdeck){    // shuffles the deck
-    int iterations = 5000; // number of iterations
+    int iterations = 10000; // number of iterations
     for(int n = 0; n<iterations; n++){
     int s1 = rand() % pdeck->size();
     int s2 = rand() % pdeck->size();
@@ -116,13 +117,13 @@ void testB(vector<card>* pdeck){
                     count++;
                 }
                 else{
-                    cout << "No identical cards" << endl;
+                    //cout << "No identical cards" << endl;
                 }
             
             }
         int n = pdeck->size() / 52;
         assert(count = n);
-        cout << "There are " << n << "multiples of " << pdeck->at(0) << "in the shuffled deck" << endl; //next to fix
+        cout << "There are " << n << " multiples of " << pdeck->at(0).suit << "\t" << pdeck->at(0).number << " in the shuffled deck" << endl;
     }
 }
 
@@ -130,7 +131,7 @@ int main() {
     srand(time(NULL));
     vector<card> deck;
     cout << "Main Start" << endl;
-    int num_decks = 2;          // Number of Decks
+    int num_decks = 1;          // Number of Decks
     int num_suits = 4;
     int num_numbers = 13;
     for( int N=0; N<num_decks; N++){
@@ -152,7 +153,19 @@ int main() {
     deck_shuffle(pdeck);
     cout << "Deck shuffled" << endl;
     testA(pdeck);
+    testB(pdeck);
     
     
-    
+    ofstream outputFile;  //Creating Output text file and copying the shuffled deck to it
+    outputFile.open("deckout.txt");
+    if(outputFile.is_open()){
+    outputFile << "test" << endl;
+    for(int i=0; i<pdeck->size(); i++){
+    outputFile << "Index: " << i << " Suit: "<< pdeck->at(i).suit << " Num: "<< pdeck->at(i).number << endl;
+        }
+    }
+    else{
+        cout << "Output File Error" << endl;
+    }
+    outputFile.close();
 }
