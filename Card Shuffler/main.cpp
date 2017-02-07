@@ -125,8 +125,7 @@ void testB(vector<card>* pdeck){
 int main() {
     srand(time(NULL));
     vector<card> deck;
-    cout << "Main Start" << endl;
-    int num_decks = 1;          // Number of Decks
+    int num_decks = 2;          // Number of Decks
     int num_suits = 4;
     int num_numbers = 13;
     for(int N=0; N<num_decks; N++){
@@ -164,4 +163,5 @@ int main() {
     }
     outputFile.close();
     cout << "Shuffled deck outputted to deckout.txt" << endl;
+    // I had to enable a specific setting in xcode the output file to work. In product > scheme > edit scheme > use custom working directory
 }
